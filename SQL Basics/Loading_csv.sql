@@ -18,8 +18,11 @@ CREATE TABLE bank_customers (
     EstimatedSalary NUMERIC,
     Exited INT
 );
-load data local infile "C:\\Users\\idrus\\bootup\\BootUP-DS-ML\\SQL Basics" into table
+load data local infile "C:\\Users\\idrus\\bootup\\BootUP-DS-ML\\SQL Basics\\Bank_churn_modelling.csv" into table
 bank_customers character set latin1 fields terminated by "," enclosed by '"'
 lines terminated by "\r\n" ignore 1 lines;
 
+select count(*) from bank_customers;
 
+use august;
+select * from bitcoin_data;
