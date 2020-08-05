@@ -128,7 +128,7 @@ SELECT * FROM worker ORDER BY first_name ASC, department desc;
 
 
 -- Q-12. Write an SQL query to print details for Workers with the first name as “Vipul” and “Satish” from Worker table.
-SELECT * FROM worker WHERE first_name = "Vipul" OR first_name = "Satish";
+SELECT * FROM worker WHERE first_name IN("Vipul","Satish");
 
 
 
@@ -137,22 +137,22 @@ SELECT * FROM worker where department = "Admin";
 
 
 -- Q-14. Write an SQL query to print details of workers excluding first names, “Vipul” and “Satish” from Worker table.
-
+SELECT * FROM worker where first_name NOT IN ("Vipul","Satish");
 
 
 
 
 -- Q-15. Write an SQL query to print details of Workers with DEPARTMENT name as “Admin”.
-
+SELECT * FROM worker where department = "Admin";
 
 
 
 -- Q-16. Write an SQL query to print details of the Workers whose FIRST_NAME contains ‘a’.
-
+SELECT * FROM worker where first_name LIKE '%a%';
 
 
 -- Q-17. Write an SQL query to print details of the Workers whose SALARY lies between 100000 and 500000.
-
+SELECT * FROM worker WHERE Salary BETWEEN 100000 AND 500000;
 
 
 
