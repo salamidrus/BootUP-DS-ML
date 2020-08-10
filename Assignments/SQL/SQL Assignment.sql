@@ -157,36 +157,46 @@ SELECT * FROM worker WHERE Salary BETWEEN 100000 AND 500000;
 
 
 -- Q-18. Write an SQL query to print details of the Workers who have joined in Feb’2014.
-
+SELECT * FROM worker WHERE MONTH(joining_date) = 2 AND YEAR(joining_date) = 2014;
 
 
 
 -- Q-19. Write an SQL query to fetch worker names with salaries >= 50000 and <= 100000.
-
+SELECT first_name,last_name FROM worker WHERE salary BETWEEN 50000 AND 100000;
 
 
 -- Q-20. Write an SQL query to print details of the Workers who are also Managers.
-
-
+SELECT * FROM worker
+INNER JOIN title
+ON worker.worker_id = title.WORKER_REF_ID
+WHERE worker_title = "Manager";
 
 
 -- Q-21. Write an SQL query to fetch duplicate records having matching data in some fields of a table.
-
+SELECT salary, department, COUNT(*) 
+FROM worker
+GROUP BY salary, department
+HAVING COUNT(*) > 1;
 
 
 
 
 -- Q-22. Write an SQL query to clone a new table from another table.
-
+CREATE TABLE new_worker LIKE worker;
 
 
 
 -- Q-23. Write an SQL query to show the top n (say 10) records of a table.
-
+SELECT * FROM worker limit 5;
 
 
 -- Q-24. Write an SQL query to determine the nth (say n=5) highest salary from a table.
-
+SELECT * FROM (
+SELECT row_number() OVER (ORDER BY salary desc) as rownumber, salary
+FROM worker
+) as salary
+WHERE rownumber = 2;
 
 
 -- Q-25. Write an SQL query to fetch the names of workers who earn the highest salary.
+SELECT first_name,last_name, MAX(salary) from worker;
